@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: master-ui
-        image: 889945364708.dkr.ecr.ap-south-1.amazonaws.com/aggrplatendtoend/master-ui:1-0-1
+        image: 889945364708.dkr.ecr.ap-south-1.amazonaws.com/aggrplatendtoend/master-ui:1-0-2
         ports:
-        - containerPort: 8090
+        - containerPort: 4200
 ---
 apiVersion: v1
 kind: Service
@@ -26,9 +26,9 @@ metadata:
     run: master-ui
 spec:
   ports:
-  - port: 8090
+  - port: 4200
     protocol: TCP
-    targetPort: 8090
-  type: ClusterIP
+    targetPort: 4200
+  type: LoadBalancer
   selector:
     run: master-ui
